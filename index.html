@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KS Numismatics LLC | Coin, Currency & Precious Metals in Canton, MI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #0a1f44;
+            --gold: #c9a84c;
+            --silver: #e2e8f0;
+            --light-grey: #f8fafc;
+            --white: #ffffff;
+            --text-dark: #1e293b;
+            --transition: all 0.3s ease;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; line-height: 1.6; color: var(--text-dark); background-color: var(--white); }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            background: var(--white);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+        .logo { font-weight: 700; font-size: 1.2rem; color: var(--navy); text-transform: uppercase; letter-spacing: 1px; }
+        .nav-links { display: flex; list-style: none; }
+        .nav-links li { margin-left: 1.5rem; }
+        .nav-links a { text-decoration: none; color: var(--navy); font-weight: 600; font-size: 0.9rem; transition: var(--transition); }
+        .nav-links a:hover { color: var(--gold); }
+
+        /* Hero */
+        .hero {
+            height: 80vh;
+            background: linear-gradient(135deg, var(--navy) 0%, #162e5a 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 10%;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%; width: 200%; height: 200%;
+            background: linear-gradient(45deg, transparent 45%, rgba(255, 255, 255, 0.05) 50%, transparent 55%);
+            animation: shimmer 6s infinite linear;
+        }
+        @keyframes shimmer { 0% { transform: translateX(-30%) translateY(-30%); } 100% { transform: translateX(10%) translateY(10%); } }
+        .hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 1rem; }
+        .hero p { font-size: 1.2rem; margin-bottom: 2rem; color: var(--silver); max-width: 700px; }
+
+        /* Buttons */
+        .btn-container { display: flex; gap: 1rem; }
+        .btn { padding: 0.8rem 1.8rem; border-radius: 4px; text-decoration: none; font-weight: 600; transition: var(--transition); cursor: pointer; border: none; display: inline-block; }
+        .btn-primary { background-color: var(--gold); color: var(--navy); }
+        .btn-primary:hover { background-color: #b08f3a; transform: translateY(-2px); }
+        .btn-secondary { background-color: transparent; border: 2px solid var(--silver); color: var(--silver); }
+        .btn-secondary:hover { background-color: var(--silver); color: var(--navy); }
+
+        /* Sections */
+        section { padding: 5rem 10%; }
+        h2 { text-align: center; font-size: 2.2rem; color: var(--navy); margin-bottom: 3rem; }
+        h2::after { content: ''; display: block; width: 60px; height: 3px; background: var(--gold); margin: 0.5rem auto; }
+
+        /* Services Grid */
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2rem; }
+        .service-card { background: var(--light-grey); padding: 2rem; border-radius: 8px; border-bottom: 4px solid var(--silver); transition: var(--transition); text-align: center; }
+        .service-card:hover { transform: translateY(-5px); border-color: var(--gold); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .service-icon { font-size: 2.5rem; margin-bottom: 1rem; display: block; }
+        .service-card h3 { margin-bottom: 1rem; color: var(--navy); }
+
+        /* About & Trust */
+        .about-container { display: flex; align-items: center; gap: 3rem; flex-wrap: wrap; }
+        .about-text { flex: 1; min-width: 300px; }
+        .trust-list { flex: 1; min-width: 300px; background: var(--navy); color: var(--white); padding: 2.5rem; border-radius: 8px; list-style: none; }
+        .trust-list li { margin-bottom: 1rem; display: flex; align-items: center; }
+        .trust-list li::before { content: '✓'; color: var(--gold); margin-right: 15px; font-weight: bold; }
+
+        /* Contact Section */
+        .contact-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+        .contact-info h3 { margin-bottom: 1rem; color: var(--navy); }
+        .contact-item { margin-bottom: 1.5rem; }
+        .contact-item a { color: var(--navy); font-weight: 600; text-decoration: none; border-bottom: 1px solid var(--gold); }
+        
+        form { display: flex; flex-direction: column; gap: 1rem; background: var(--light-grey); padding: 2rem; border-radius: 8px; }
+        input, select, textarea { padding: 0.8rem; border: 1px solid #ddd; border-radius: 4px; font-family: inherit; width: 100%; }
+        
+        .map-placeholder { width: 100%; height: 250px; background: #e2e8f0; margin-top: 2rem; border-radius: 8px; display: flex; align-items: center; justify-content: center; text-align: center; color: #64748b; border: 1px dashed #cbd5e1; }
+
+        /* Footer */
+        footer { background: var(--navy); color: var(--white); text-align: center; padding: 3rem 10%; }
+        .footer-content p { opacity: 0.8; font-size: 0.9rem; margin-bottom: 0.5rem; }
+
+        @media (max-width: 768px) {
+            .contact-wrapper { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            .hero h1 { font-size: 2rem; }
+            .btn-container { flex-direction: column; width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">KS Numismatics LLC</div>
+        <ul class="nav-links">
+            <li><a href="#services">Services</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <h1>KS Numismatics LLC</h1>
+        <p>Your Trusted Coin & Currency Specialists in Canton, Michigan. We provide expert appraisals and top-dollar offers for your collection.</p>
+        <div class="btn-container">
+            <a href="#contact" class="btn btn-primary">Get a Free Appraisal</a>
+            <a href="#services" class="btn btn-secondary">What We Buy</a>
+        </div>
+    </header>
+
+    <section id="services">
+        <h2>Expertise & Specializations</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <span class="service-icon">🏛️</span>
+                <h3>Coins (Graded & Raw)</h3>
+                <p>U.S. Type coins, Morgan & Peace Dollars, and PCGS/NGC certified rarities. We value quality and historical significance.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">🔥</span>
+                <h3>Scrap Gold & Silver</h3>
+                <p>Turn broken jewelry, sterling flatware, or dental gold into immediate cash. We pay based on live market spot prices.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">💰</span>
+                <h3>Gold & Silver Bullion</h3>
+                <p>Buying and selling Eagles, Maples, and generic bars/rounds. Competitive premiums for investors and collectors.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">📜</span>
+                <h3>Paper Currency</h3>
+                <p>Specializing in large-size "blanket" notes, fractional currency, and high-denomination U.S. banknotes.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" style="background-color: var(--light-grey);">
+        <h2>About Us</h2>
+        <div class="about-container">
+            <div class="about-text">
+                <p>KS Numismatics LLC is a Canton, Michigan-based company dedicated to serving collectors and estates with absolute integrity. Whether you are looking to liquidate a lifelong collection or invest in precious metals, we provide a professional, transparent environment.</p>
+                <br>
+                <p>We handle everything from individual rare coins to massive estate hoards, ensuring you receive a fair, market-accurate valuation every time.</p>
+            </div>
+            <ul class="trust-list">
+                <li>Fair & Transparent Pricing</li>
+                <li>Free No-Obligation Offers</li>
+                <li>Decades of Numismatic Expertise</li>
+                <li>Estate & Collection Buyouts</li>
+                <li>Serving Canton & Metro Detroit</li>
+                <li>Professional & Discreet Service</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact & Evaluation</h2>
+        <div class="contact-wrapper">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <h3>Our Location</h3>
+                    <p>Canton, MI 48187<br>(Full Address Provided Upon Request/Appointment)</p>
+                </div>
+                <div class="contact-item">
+                    <h3>Direct Contact</h3>
+                    <p>Phone: <a href="tel:9498669040">(949) 866-9040</a></p>
+                    <p>Email: <a href="mailto:ksnumismatics@gmail.com">ksnumismatics@gmail.com</a></p>
+                </div>
+                <p><em>"We welcome walk-ins, appointments, and estate calls. Send us a message today for a fast evaluation."</em></p>
+                
+                <div class="map-placeholder">
+                    <p>📍 Serving Canton, MI and surrounding areas.<br>Available for Estate Travel across Metro Detroit.</p>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <form action="https://formspree.io/f/mdapngkv" method="POST">
+                    <input type="text" name="name" placeholder="Full Name" required>
+                    <input type="email" name="email" placeholder="Email Address" required>
+                    <input type="tel" name="phone" placeholder="Phone Number">
+                    
+                    <select name="item_type" required>
+                        <option value="" disabled selected>What are you looking to value?</option>
+                        <option value="Graded Coins">Graded/Certified Coins</option>
+                        <option value="Raw Coins">Raw/Ungraded Coins</option>
+                        <option value="Scrap Gold/Silver">Scrap Gold or Jewelry</option>
+                        <option value="Bullion">Bullion (Bars/Rounds)</option>
+                        <option value="Currency">Paper Currency</option>
+                        <option value="Other">Other / Estate Collection</option>
+                    </select>
+
+                    <textarea name="message" rows="5" placeholder="Please describe your items..." required></textarea>
+                    
+                    <input type="text" name="_gotcha" style="display:none">
+                    
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Request</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <p><strong>KS Numismatics LLC</strong></p>
+            <p>Canton, Michigan | (949) 866-9040</p>
+            <p>Licensed Numismatic Dealer</p>
+            <p style="margin-top: 1.5rem; font-size: 0.7rem; opacity: 0.5;">&copy; 2026 KS Numismatics LLC. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
